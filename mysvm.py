@@ -1,11 +1,9 @@
-# Mathieu Blondel, September 2010
-# License: BSD 3 clause
-
 import numpy as np
 from numpy import linalg
 import cvxopt
 import cvxopt.solvers
 
+## define kenrel functions
 def linear_kernel(x1, x2):
     return np.dot(x1, x2)
 
@@ -14,10 +12,16 @@ def polynomial_kernel(x, y, p=3):
 
 def gaussian_kernel(x, y, sigma=5.0):
     return np.exp(-linalg.norm(x-y)**2 / (2 * (sigma ** 2)))
+## end define kernel functions
 
 class SVM(object):
 
     def __init__(self, kernel=linear_kernel, C=None):
+        """
+
+        :param kernel: kernel types, should be in the kernel function list above
+        :param C:
+        """
         self.kernel = kernel
         self.C = C
         if self.C is not None: self.C = float(self.C)
@@ -47,7 +51,7 @@ class SVM(object):
             tmp2 = np.ones(n_samples) * self.C
             h = cvxopt.matrix(np.hstack((tmp1, tmp2)))
 
-        # solve QP problem
+        # solve QP problem, DOC: http://cvxopt.org/userguide/coneprog.html?highlight=qp#cvxopt.solvers.qp
         solution = cvxopt.solvers.qp(P, q, G, h, A, b)
 
         # Lagrange multipliers

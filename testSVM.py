@@ -117,10 +117,10 @@ def test_non_linear():
     X_train, y_train = split_train(X1, y1, X2, y2)
     X_test, y_test = split_test(X1, y1, X2, y2)
 
-    X_train = np.load('inputClf/X_train.npy')
-    y_train = np.load('inputClf/y_train.npy')
-    X_test = np.load('inputClf/X_test.npy')
-    y_test = np.load('inputClf/y_test.npy')
+    # X_train = np.load('inputClf/X_train.npy')
+    # y_train = np.load('inputClf/y_train.npy')
+    # X_test = np.load('inputClf/X_test.npy')
+    # y_test = np.load('inputClf/y_test.npy')
     clf = SVM(gaussian_kernel, C=1)
     clf.fit(X_train, y_train)
 

@@ -1,0 +1,10 @@
+\BOOKMARK [1][-]{section.1}{Note}{}% 1
+\BOOKMARK [1][-]{section.2}{Classification}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Hard-margin Primal formulation}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Hard-margin Dual formulation}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.3}{Kernel hard-margin Dual formulation}{section.2}% 5
+\BOOKMARK [2][-]{subsection.2.4}{Soft-margin Primal formulation}{section.2}% 6
+\BOOKMARK [2][-]{subsection.2.5}{Soft-margin Dual formulation}{section.2}% 7
+\BOOKMARK [1][-]{section.3}{Regression}{}% 8
+\BOOKMARK [2][-]{subsection.3.1}{Soft-margin SVR primal formulation}{section.3}% 9
+\BOOKMARK [2][-]{subsection.3.2}{Soft-margin SVR dual formulation}{section.3}% 10

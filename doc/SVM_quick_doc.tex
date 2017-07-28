@@ -1,0 +1,279 @@
+\documentclass[11pt, a4paper, reqno, twoside]{scrartcl}
+
+\usepackage[a4paper, hmargin={1in, 1in}, vmargin={1in,
+  1in},headsep=10mm,headheight=5mm,footskip=30pt]{geometry}
+ 
+\usepackage{graphicx, amsmath, amssymb,amsthm}
+\usepackage{hyperref}
+\usepackage{bm,color}
+\usepackage{verbatim}
+
+\usepackage{fancyhdr}
+  \renewcommand{\baselinestretch}{0.97} %this factor controls the space between lines
+  \fancyhead[]{}
+  \renewcommand{\headrulewidth}{0pt}
+
+% the only way to get two column algorithms seems to be to use a hack on top of the algorithm2e package
+\usepackage{multicol}
+%\usepackage[ruled,commentsnumbered]{algorithm2e}
+
+\newenvironment{algo}{%
+  \renewenvironment{algocf}[1][h]{}{}% pass over the floating stuff
+  \algorithm
+}{%
+  \endalgorithm
+}
+
+\definecolor{darkgreen}{rgb}{0,.4,.2}
+\definecolor{darkblue}{rgb}{.1,.2,.6}
+\definecolor{brightblue}{rgb}{0,0.6,0.8}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=darkblue,
+  citecolor=darkgreen,
+  filecolor=darkblue,
+  urlcolor=darkblue
+}
+
+\addtokomafont{caption}{\small}
+\addtokomafont{captionlabel}{\sffamily\bfseries}
+
+\newtheoremstyle{style}
+ {\topsep}              % Space above
+ {\topsep}              % Space below
+ {\itshape}              % Body font: original {\normalfont}
+ {}                         % Indent amount (empty = no indent,%\parindent = paraindent)
+ {\sffamily\bfseries}  % Thm head font original
+ {.}	                     % Punctuation after thm head
+ { }                         % Space after thm head (\newline = linebreak)
+ {}                          % Thm head spec
+\theoremstyle{style}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Environments, Definitions, Commands %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[definition]{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}[definition]{Corollary}
+\newtheorem{observation}[definition]{Observation}
+\newtheorem{conjecture}[definition]{Conjecture}
+\newtheorem{remark}[definition]{Remark}
+\newtheorem{problem}{Problem}
+\newtheorem{claim}{Claim}
+\newtheorem{open}{Open Problem}
+\newtheorem*{example}{Example}
+
+% the * at the end of operator seems to have the effect that the command will be properly have its sub/superstripts vertically below/above it, like \sum for example, this only applies if you are in \displaystyle
+\DeclareMathOperator{\st}{\textrm{s.t.}}
+\DeclareMathOperator*{\conv}{conv}
+\DeclareMathOperator{\diam}{diam}
+\DeclareMathOperator*{\E}{\rm E}
+\DeclareMathOperator*{\argmin}{\arg\min}
+\DeclareMathOperator*{\argmax}{\arg\max}
+\DeclareMathOperator{\lmax}{\lambda_{\max}}
+\DeclareMathOperator{\lmin}{\lambda_{\min}}
+\DeclareMathOperator*{\supp}{supp}
+\DeclareMathOperator*{\diag}{diag}
+\DeclareMathOperator*{\sign}{sign}
+\DeclareMathOperator*{\tr}{Tr}
+\DeclareMathOperator*{\rk}{Rk}
+\DeclareMathOperator*{\card}{card}
+\DeclareMathOperator*{\nnz}{nnz}
+\DeclareMathOperator*{\relint}{\mathop{relint}}
+
+%norms
+\providecommand{\abs}[1]{\left\lvert#1\right\rvert}
+\providecommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\newcommand{\ball}{\mathcal{B}}
+\newcommand{\sphere}{\mathcal{S}}
+
+\newcommand{\bigO}{O}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\X}{\mathcal{X}}
+\newcommand{\Sym}{\mathbb{S}}
+
+\newcommand{\domain}{\mathcal{D}}
+\newcommand{\stepsize}{\gamma}
+\newcommand{\x}{\bm{x}}
+\newcommand{\y}{\bm{y}}
+\newcommand{\z}{\bm{z}}
+\newcommand{\bv}{\bm{b}}
+\newcommand{\uv}{\bm{u}}
+\newcommand{\av}{\bm{v}}
+\newcommand{\vv}{\bm{v}}
+\newcommand{\wv}{\bm{w}}
+\newcommand{\xv}{\bm{x}}
+\newcommand{\row}{\text{row}}
+\newcommand{\col}{\text{col}}
+\newcommand{\lft}{\text{left}}
+\newcommand{\rgt}{\text{right}}
+%
+\newcommand{\signVec}{\mathbf{s}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\id}{\mathbf{I}} % big i for identity
+\newcommand{\ind}{\mathbf{1}} % indicator vectors
+\newcommand{\0}{\mathbf{0}} % the origin
+\newcommand{\unit}{\mathbf{e}} % unit basis vectors
+\newcommand{\one}{\mathbf{1}} % all one vector
+\newcommand{\zero}{\mathbf{0}}
+\newcommand\SetOf[2]{\left\{#1\vphantom{#2}\right.\left|\vphantom{#1}\,#2\right\}}
+\newcommand{\ignore}[1]{}%{\textbf{***begin ignore***}\\#1\textbf{***end ignore***}}
+
+
+% new command added by jl
+\usepackage{bbm}
+\newcommand{\bw}{\bm{w}}
+\newcommand{\bx}{\bm{x}}
+\newcommand{\bb}{\bm{b}}
+\newcommand{\balpha}{\bm{\alpha}}
+\newcommand{\bbeta}{\bm{\beta}}
+\newcommand{\bxi}{\bm{\xi}}
+\newcommand{\bz}{\bm{z}}
+
+\newcommand{\todo}[1]{\marginpar[\hspace*{4.5em}\textbf{TODO}\hspace*{-4.5em}]{\textbf{TODO}}\textbf{TODO:} #1}
+\newcommand{\note}[1]{\marginpar{#1}}
+
+%\newcounter{problem}
+
+
+\def\Prob{{\mathbb{P}}}
+\def\scal#1,#2{{\langle\,#1, #2\rangle}}
+\def\sigmoid {{\dfrac{1}{1 + \exp(-\scal)}}}
+\def\E{{\mathbb{E}}}
+\def\R{{\mathbb{R}}}
+\def\gradient[#1]{{\dfrac{\partial}{\partial #1}}}
+
+\begin{document}
+\pagestyle{fancy}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{quick doc on SVM}
+
+\author{\\ Jun Lu\\
+{\small Computer Science, EPFL}\\
+{\small \href{mailto:jun.lu.locky@gmail.com}{jun.lu.locky@gmail.com}}}
+\date{}
+
+
+\maketitle
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\paragraph{Abstract.}
+%Rewrite proof for SGD, clarifying the role of $R:= \max_i \|\x_i\|$.
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%\section{Introduction}
+
+%We prove some results
+%\begin{equation}\label{eq:someEquationName}
+%   L_i := \ell(\langle \x_i, \wv \rangle, y_i).
+%\end{equation}
+%where \eqref{eq:someEquationName} is mainly a placeholder.
+\section{Note}
+This documents serves as a quick document for implementation of SVM and might be later a survey on SVM of pairwise feature for SVM.
+
+\section{Classification}
+Let $\{(\bx_n, y_n)\}_{n = 1}^N$ be a training sample, normally we have $y_n = \sign(\bw^T \bx_n + b)$, where $\bw, b$ is the weight variable and bias variable we want to learn. In other formulation, the bias variable can also be referred as $w_0$.
+
+\subsection{Hard-margin Primal formulation}
+Due to trivial derivation, we have
+\begin{equation}
+\begin{aligned}
+\min_{\bw,\bb} \, &\frac{1}{2} \bw^T \bw\\
+\mathrm{s.t. }   \,                & y_n (\bw^T \bx_n + b) \geq 1, \mathrm{for }\,  n=1, 2, \ldots, N. 
+\end{aligned}
+\end{equation}
+
+\subsection{Hard-margin Dual formulation}
+With Lagrange multiplier $\alpha_n$ and some non-linear function $\bz_n=\Phi(\bx_n)$, we have the objective function,
+\begin{equation}
+\mathrm{L}(\bw, b, \balpha) = \frac{1}{2} \bw^T \bw + \sum_{n=1}^N \alpha_n (1- y_n (\bw^T \bz_n +b )).
+\end{equation}
+With trivial derivation, we have
+\begin{equation}
+\begin{aligned}
+\min_{\balpha} \, &\frac{1}{2} \sum_{n=1}^N \sum_{m=1}^N \alpha_n \alpha_m y_n y_m \bz_n^T \bz_m - \sum_{n=1}^N \alpha_n \\ 
+\mathrm{s.t. }   \,                & \sum_{n=1}^N y_n \alpha_n =0; \\
+									 & \alpha_n \geq 0,  \mathrm{for }\,  n=1, 2, \ldots, N. 
+\end{aligned}
+\end{equation}
+
+\subsection{Kernel hard-margin Dual formulation}
+Let $q_{n,m} = y_n y_m \bz_n^T \bz_m$. What we want is make the calculation of $\bz_n^T \bz_m$ faster than $O(D)$, where $D$ is the dimension of sample or transferred feature.
+Trivial derivation would give $q_{n,m} = y_n y_m K(\bx_n, \bx_m)$. 
+
+\subsection{Soft-margin Primal formulation}
+Give up some noisy samples
+\begin{equation}
+\begin{aligned}
+\min_{\bw,\bb} \, &\frac{1}{2} \bw^T \bw  + C \cdot \sum_{n=1}^N   \mathbbm{1}\{ y_n \neq \sign(\bw^T \bz_n + b) \} \\
+\mathrm{s.t. }   \,                & y_n (\bw^T \bx_n + b) \geq 1, \mathrm{for }\,  \mathrm{correct \, n}, \\
+										& y_n (\bw^T \bx_n + b) \geq -\infty, \mathrm{for }\,  \mathrm{incorrect\, n},
+\end{aligned}
+\end{equation}
+Equivalently, we have
+\begin{equation}
+\begin{aligned}
+\min_{\bw,\bb} \, &\frac{1}{2} \bw^T \bw  + C \cdot \sum_{n=1}^N   \mathbbm{1}\{ y_n \neq \sign(\bw^T \bz_n + b) \} \\
+\mathrm{s.t. }   \,                & y_n (\bw^T \bx_n + b) \geq 1 -\infty \cdot  \mathbbm{1}\{ y_n \neq \sign(\bw^T \bz_n + b) \}, \mathrm{for }\,  \mathrm{all \, n}, 									
+\end{aligned}
+\end{equation}
+
+\subsection{Soft-margin Dual formulation}
+With Lagrange multipliers $\alpha_n$ and $\beta_n$, let $\xi_n =  \mathbbm{1}\{ y_n \neq \sign(\bw^T \bz_n + b) \}$, , we have the objective function,
+\begin{equation}
+\begin{aligned}
+\mathrm{L}(\bw, b,\bxi, \balpha, \bbeta) &= \frac{1}{2} \bw^T \bw + C \cdot \sum_{n=1}^N \xi_n \\
+													&+ \sum_{n=1}^N \alpha_n \cdot (1- \xi_n - y_n (\bw^T \bz_n + b)) \sum_{n=1}^N + \beta_n \cdot (- \xi_n).
+\end{aligned}
+\end{equation}
+With trivial derivation, we have
+\begin{equation}
+\begin{aligned}
+\min_{\balpha} \, &\frac{1}{2} \sum_{n=1}^N \sum_{m=1}^N \alpha_n \alpha_m y_n y_m \bz_n^T \bz_m - \sum_{n=1}^N \alpha_n \\ 
+\mathrm{s.t. }   \,                & \sum_{n=1}^N y_n \alpha_n =0; \\
+									 & 0 \leq \alpha_n \leq C,  \mathrm{for }\,  n=1, 2, \ldots, N. 
+\end{aligned}
+\end{equation}
+
+
+\section{Regression}
+Some other references introduced support vector regression (SVR), the basic idea is similar to support vector classification \cite{smola2004tutorial}. We here only introduce the soft-margin support vector regression.
+
+\subsection{Soft-margin SVR primal formulation}
+Due to trivial derivation, we have 
+\begin{equation}
+\begin{aligned}
+\min_{\bw,\bb} \, &\frac{1}{2} \bw^T \bw  + C \cdot \sum_{n=1}^N  (\xi_n + \xi^\star_n) \\
+\mathrm{s.t. }   \,                & y_n (\bw^T \bz_n + b) \leq \epsilon + \xi_n, \\
+										& y_n (\bw^T \bz_n + b) \leq \epsilon +  \xi^\star_n ,\\
+										& \xi_n, \xi^\star_n \geq 0, n = 1, 2, \ldots, N.
+\end{aligned}
+\end{equation}
+
+\subsection{Soft-margin SVR dual formulation}
+With trivial derivation, we have
+\begin{equation}
+\begin{aligned}
+\min_{\balpha} \, &\frac{1}{2} \sum_{n=1}^N \sum_{m=1}^N (\alpha_n - \alpha^\star_n) (\alpha_m - \alpha^\star_m)  \bz_n^T \bz_m - \epsilon \sum_{n=1}^N (\alpha_n+\alpha^\star_n) + \sum_{n=1}^N y_n (\alpha_n -\alpha^\star_n) \\ 
+\mathrm{s.t. }   \,                & \sum_{n=1}^N (\alpha_n-\alpha^\star_n) =0; \\
+									 & 0 \leq \alpha_n, \alpha^\star_n \leq C,  \mathrm{for }\,  n=1, 2, \ldots, N. 
+\end{aligned}
+\end{equation}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\bibliographystyle{plain}
+\bibliography{bibliography}
+
+
+\end{document}
