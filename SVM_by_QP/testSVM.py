@@ -1,4 +1,4 @@
-from mysvm import *
+from SVCQP import *
 import pylab as pl
 
 def gen_lin_separable_data():

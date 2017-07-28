@@ -15,6 +15,9 @@ def gaussian_kernel(x, y, sigma=5.0):
 ## end define kernel functions
 
 class SVM(object):
+    """
+    Suppoet vector classification by quadratic programming
+    """
 
     def __init__(self, kernel=linear_kernel, C=None):
         """
